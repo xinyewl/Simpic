@@ -1,0 +1,47 @@
+{include file="/common/header"}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-1g-6 login">
+                <div class="lk-panel">
+                    <h1 class="text-center">登录</h1>
+                    <form class="layui-form" action="" method="post">
+                        <div class="layui-form-item">
+                            <input type="text" name="user" required="" lay-verify="required" placeholder="请输入邮箱/用户名" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <input type="password" name="password" required="" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="pull-right">
+                                <a href="javascript:forgot()">忘记密码？</a>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn btn-block" id="sign-in" lay-submit="" lay-filter="sign-in">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        layui.use('form', function() {
+            var form = layui.form;
+            form.on('submit(sign-in)', function(data) {
+                btnLoad('#sign-in', '登录中...');
+                $.post('', data.field, function(result) {
+                    closeBtnLoad('#sign-in', '登录');
+                    if(result.code) {
+                        layer.msg(result.msg, {icon: 1}, function(index) {
+                            layer.close(index);
+                            location.href = '/';
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2});
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+{include file="/common/footer"}

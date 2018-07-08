@@ -1,0 +1,62 @@
+a, a:hover, a:active, a:focus { text-decoration:none; }
+.m-r-10 { margin-right: 10px; }
+.none { display: none; }
+/* ----- BootStarp ----- */
+.form-control { border-radius: 2px; }
+/* ----- Layui ----- */
+.layui-elem-quote.title {
+    padding: 10px 15px;
+    margin-bottom: 0;
+}
+.sysNotice .layui-elem-quote {
+    line-height: 26px;
+    position: relative;
+}
+.sysNotice .layui-table { border-left: 5px solid #e2e2e2; }
+.notice { cursor: pointer; }
+.noticeDetails { margin: 20px; }
+.noticeDetails cite { position: absolute; right: 1px; bottom: 1px; }
+.system .layui-table, .notice .layui-table { margin-top: 0; }
+.scheme { margin-top: 10px; }
+.wp-panel {
+    height: 85px;
+    background-color: white;
+    background-color: #ecf0f5;
+    margin-bottom: 10px;
+}
+.wp-panel > i {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    height: 85px;
+    width: 85px;
+    text-align: center;
+    font-size: 45px;
+    line-height: 85px;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+.wp-word {
+    text-align: center;
+    padding: 20px 10px;
+    margin-left: 85px;
+}
+.wp-word > span {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+.list-per .layui-input, .list-per .layui-select, .list-per .layui-textarea {
+    height: 30px;
+    width: 200px;
+}
+@media screen and (max-width: 768px) {
+    .list-per .layui-input, .list-per .layui-select, .list-per .layui-textarea { width: 100px; }
+    .notice-date { display: none; }
+}
+@media screen and (max-width: 360px) {
+    .list-per .layui-form-select input { width: 100%; margin-bottom: 10px; }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$conf.web_title}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{$conf.keywords}" />
+    <meta name="description" content="{$conf.description}" />
+    {css href="_layui_css/layui.css"}
+    {css href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"}
+    {css href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"}
+    {css href="//cdn.bootcss.com/bootstrap-fileinput/4.4.3/css/fileinput.min.css"}
+    {css href="_css_main.css"}
+    {js href="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"}
+    {js href="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    {js href="//cdn.bootcss.com/bootstrap-fileinput/4.4.3/js/fileinput.min.js"}
+    {js href="//cdn.bootcss.com/bootstrap-fileinput/4.4.3/js/locales/zh.min.js"}
+    {js href="_layui_layui.js"}
+    {js href="_js_main.js"}
+</head>
+    <!-- 自定义style -->
+    <style type="text/css">
+        {$conf.custom_style}
+    </style>
+<body>
+    <nav class="header navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">navbar</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><i class="fa fa-leaf fa-fw"></i> 兰空</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav navbar-left">
+                    <!--<li><a href="/">首页</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {if condition="$user"}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$user.email} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{:url('/user')}">管理</a></li>
+                            {if condition="$user.id eq 1"}
+                            <li><a href="{:url('/admin.php')}">后台</a></li>
+                            {/if}
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:logout()">退出</a></li>
+                        </ul>
+                    </li>
+                    {else /}
+                    <li><a href="{:url('/reg')}">注册</a></li>
+                    <li><a href="{:url('/login')}">登录</a></li>
+                    {/if}
+                </ul>
+            </div>
+        </div>
+    </nav>

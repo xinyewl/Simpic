@@ -1,0 +1,34 @@
+{include file="/common/header"}
+<div class="container-fluid">
+    <div class="row">
+        {foreach $theme as $v}
+        <div class="col-sm-3 col-md-3 col-1g-3">
+            <div class="thumbnail">
+                <img src="{$v.images}" width="100%" alt="{$v.name}">
+                <div class="caption">
+                    <h3>{$v.name} <small><a target="_blank" href="{$v.link}">{$v.author}</a></small></h3>
+                    <p>{$v.explain}</p>
+                    <p>
+                        <a class="btn btn-primary btn-block use" role="button"{if condition="$conf.now_theme eq $v.key"}disabled>当前使用{else /} href="javascript:use('{$v.key}')">使用{/if}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+</div>
+<script type="text/javascript">
+    function use(key) {
+        btnLoad('.use', 'Loading...');
+        $.post('', {'theme': key}, function(res) {
+            if(res.code) {
+                layer.msg(res.msg, {icon: 1}, function() {
+                    return history.go(0);
+                });
+            }
+            return layer.alert(res.msg, {icon: res.code ? 1 : 2});
+        });
+        closeBtnLoad('.use', '使用');
+    }
+</script>
+{include file="/common/footer"}

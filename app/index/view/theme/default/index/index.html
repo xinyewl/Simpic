@@ -1,0 +1,77 @@
+{include file="/common/header"}
+    <div class="container">
+        <div class="fileinput lk-panel">
+            <h1>请选择图片上传 <small>最大限制 {$conf.upload_max_filesize / 1024|round=###, 2}M</small></h1>
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="img" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-max-file-count="10" name="img" accept="image/*">
+                </div>
+            </form>
+        </div>
+        <div id="link" class="lk-panel none">
+            <ul id="navTab" class="nav nav-tabs">
+                <li class="active"><a href="#urlcodes" data-toggle="tab">URL</a></li>
+                <li><a href="#htmlcodes" data-toggle="tab">HTML</a></li>
+                <li><a href="#bbcodes" data-toggle="tab">BBCode</a></li>
+                <li><a href="#markdowncodes" data-toggle="tab">Markdown</a></li>
+                <li><a href="#markdowncodes2" data-toggle="tab">Markdown with Link</a></li>
+            </ul>
+            <div id="navTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="urlcodes">
+                    <pre style="margin-top: 5px;"><code id="urlcode"></code></pre>
+                </div>
+                <div class="tab-pane fade" id="htmlcodes">
+                    <pre style="margin-top: 5px;"><code id="htmlcode"></code></pre>
+                </div>
+                <div class="tab-pane fade" id="bbcodes">
+                    <pre style="margin-top: 5px;"><code id="bbcode"></code></pre>
+                </div>
+                <div class="tab-pane fade" id="markdowncodes">
+                    <pre style="margin-top: 5px;"><code id="markdown"></code></pre>
+                </div>
+                <div class="tab-pane fade" id="markdowncodes2">
+                    <pre style="margin-top: 5px;"><code id="markdownlinks"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $("#img").fileinput({
+            uploadUrl: './',
+            language: 'zh',
+            allowedFileExtensions : ['{$conf.upload_images_ext|str_replace=",", "','", ###}'],
+            overwriteInitial: false,
+            //browseClass: "btn btn-info",
+            maxFileSize: {$conf.upload_max_filesize},
+            maxFileCount: {$conf.upload_max_file_count},
+            browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i>"
+        });
+        $('#img').on('fileuploaded', function(event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+            if(response.code == 'success') {
+                if ($("#link").css("display") != 'none') {
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#markdownlinks').append("[!["+ files[index].name +"](" + response.data.url + ")]" +"(" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+
+                } else if (response.data.url) {
+                    $("#link").show();
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#markdownlinks').append("[!["+ files[index].name +"](" + response.data.url + ")]" +"(" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+                }
+            } else if (response.code == 0) {
+                return layer.msg(response.msg, {icon: 2});
+            }
+        });
+        /*$('#img').on('fileerror', function(event, data, msg) {
+            console.log(msg);
+        });*/
+    </script>
+{include file="/common/footer"}

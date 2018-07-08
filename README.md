@@ -4,10 +4,10 @@
 
 ## 原程序（已停止维护）
 
-项目：兰空图床
-作者：WispX
-作者博客：https://www.wispx.cn/
-源项目：https://gitee.com/wispx/lsky
+ - 项目：兰空图床
+ - 作者：WispX
+ - 作者博客：https://www.wispx.cn/
+ - 源项目：https://gitee.com/wispx/lsky
 
 ## 新特性
 
