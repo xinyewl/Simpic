@@ -249,5 +249,5 @@ return [
     'theme_path'            => str_replace("\\", "/", APP_PATH . "index/view/theme"),
 
     //文件上传路径
-    'file_path'             => str_replace("\\", "/", ROOT_PATH . "public/pic"),
+    'file_path'             => str_replace("\\", "/", ROOT_PATH . "public"),
 ];

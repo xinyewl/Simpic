@@ -1,10 +1,4 @@
 <?php
-/**
- * admin模块共用控制器
- * User: WispX
- * Date: 2017/9/15
- * Time: 15:32
- */
 
 namespace app\admin\controller;
 
@@ -25,10 +19,6 @@ class Common extends Controller
 
     public function _initialize()
     {
-        // 检测域名授权
-        // 不收费了。。
-        //$auth = json_decode(curl('https://service.lskys.cc/server.php', ['action' => 'auth', 'domain' => $_SERVER['HTTP_HOST']]), true);
-        //if(!$auth['code']) die('程序未授权，请联系QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=1591788658&site=qq&menu=yes">1591788658</a> 授权！');
         if(empty(session('admin')) || empty(cookie('admin'))) return $this->redirect('login/');
         $this->admin = Db::name('user')->where('username', session('admin'))->find();
         if(count($this->admin) > 0) {

@@ -1,11 +1,5 @@
 <?php
-/**
- * 图片管理
- * User: WispX
- * Date: 2017/9/22
- * Time: 15:26
- * Link: http://gitee.com/wispx
- */
+
 namespace app\admin\controller;
 
 use think\Db;
@@ -34,7 +28,7 @@ class Picture extends Common
             $val['user_id'] = $this->getUserName($val['user_id']);
             switch ($val['scheme_id']) {
                 case 1:
-                    $url = "{$this->web['domain']}/pic/{$val['path']}"; break;
+                    $url = "{$this->web['domain']}/{$val['path']}"; break;
                 case 2:
                     $url = "{$scheme['qiniu']['domain']}/{$val['path']}"; break;
                 case 3:

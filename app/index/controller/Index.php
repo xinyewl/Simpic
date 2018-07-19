@@ -50,17 +50,17 @@ class Index extends Common
     private function localUpload($file)
     {
         if($file) {
-            $date = date('Ymd', time());
-            $info = $file->validate(['size'=> $this->conf['upload_max_filesize'] * 1024, 'ext'=> $this->conf['upload_images_ext']])->rule('uniqid')->move("{$this->conf['file_path']}/{$this->user['id']}/" . $date);
+            $date = date('Y-m-d', time());
+            $info = $file->validate(['size'=> $this->conf['upload_max_filesize'] * 1024, 'ext'=> $this->conf['upload_images_ext']])->rule('uniqid')->move("{$this->conf['file_path']}/" . $date);
             if($info) {
-                $file_path = str_replace("\\", "/", Config::get('web.domain') . "/pic/{$this->user['id']}/{$date}/{$info->getSaveName()}");
+                $file_path = str_replace("\\", "/", Config::get('web.domain') . "/{$date}/{$info->getSaveName()}");
                 return $this->saveImg(
                     1,
                     $info->getFilename(),
                     $file->getInfo('type'),
                     $info->getSize(),
                     $info->hash('sha1'),
-                    str_replace("\\", "/", "{$this->user['id']}/{$date}/{$info->getSaveName()}"),
+                    str_replace("\\", "/", "{$date}/{$info->getSaveName()}"),
                     $file_path
                 );
             } else {

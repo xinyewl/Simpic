@@ -55,7 +55,7 @@ class User extends Common
             foreach ($data as &$val) {
                 switch ($val['scheme_id']) {
                     case 1:
-                        $val['url'] = "{$this->web['domain']}/pic/{$val['path']}"; break;
+                        $val['url'] = "{$this->web['domain']}/{$val['path']}"; break;
                     case 2:
                         $val['url'] = "{$scheme['qiniu']['domain']}/{$val['path']}"; break;
                     case 3:
