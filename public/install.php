@@ -1,11 +1,5 @@
 <?php
-/**
- * 安装
- * User: WispX
- * Date: 2017/9/23
- * Time: 16:46
- * Link: http://gitee.com/wispx
- */
+
 $config_file = '../app/db.php';
 $stop = isset($_GET['stop']) ? $_GET['stop'] : 1;
 $action = isset($_GET['action']) ? $_GET['action'] : false;
@@ -62,7 +56,7 @@ switch ($stop) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>安装兰空</title>
+    <title>安装程序 - Simpic</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -81,7 +75,7 @@ switch ($stop) {
         <div class="col-sm-6 col-md-6 col-1g-6 col-sm-offset-3 col-md-offset-3 col-1g-offset-3">
             <div class="main">
                 <?php if($stop == 2) { ?>
-                <h2>安装兰空 - 连接数据库</h2><hr>
+                <h2>安装Simpic - 连接数据库</h2><hr>
                 <?php if(!empty($msg)) { ?>
                 <div class="alert alert-danger" role="alert"><?php echo $msg; ?></div>
                 <?php } ?>
@@ -96,7 +90,7 @@ switch ($stop) {
                         <input type="text" class="form-control" required id="db_base" name="db_base" value="lsky" placeholder="数据库名">
                     </div>
                     <div class="form-group">
-                        <label for="db_user">用户名</label>
+                        <label for="db_user">数据库用户名</label>
                         <input type="text" class="form-control" required id="db_user" name="db_user" value="lsky" placeholder="数据库用户名">
                     </div>
                     <div class="form-group">
@@ -122,7 +116,7 @@ switch ($stop) {
                     <button type="submit" class="btn btn-default btn-block">下一步</button>
                 </form>
                 <?php } elseif ($stop == 3) { ?>
-                <h2>安装成功</h2><hr>
+                <h2>安装成功 - Simpic</h2><hr>
                 <?php if(!empty($msg)) { ?>
                     <div class="alert alert-danger" role="alert"><?php echo $msg; ?></div>
                 <?php } ?>
@@ -142,7 +136,7 @@ switch ($stop) {
                         </div>
                     </div>
                 <?php } else { ?>
-                <h2>安装兰空 - 检测</h2><hr>
+                <h2>安装检测 - Simpic</h2><hr>
                 <?php if(!empty($msg)) { ?>
                     <div class="alert alert-danger" role="alert"><?php echo $msg; ?></div>
                 <?php } ?>

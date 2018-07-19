@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>兰空 - 后台管理系统</title>
+    <title>Simpic - 后台管理</title>
     {css href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"}
     {css href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"}
 </head>
@@ -55,7 +55,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:void(0)"><i class="fa fa-leaf fa-fw"></i> 兰空</a>
+            <a class="navbar-brand" href="javascript:void(0)"><i class="fa fa-leaf fa-fw"></i> Simpic</a>
         </div>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav menu">
@@ -94,7 +94,7 @@
             })
             $(this).addClass('lk-this');
             var a = $(this).children('a');
-            $('title').html(a.text() + ' - {$conf.web_title} - 后台管理系统');
+            $('title').html(a.text() + ' - {$conf.web_title} - 后台管理');
             a.attr('data-url');
         });
         layui.use('layer', function() {
