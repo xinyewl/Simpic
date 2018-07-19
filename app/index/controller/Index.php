@@ -50,7 +50,7 @@ class Index extends Common
     private function localUpload($file)
     {
         if($file) {
-            $date = date('Y-m-d', time());
+            $date = date('Y/m/d', time());
             $info = $file->validate(['size'=> $this->conf['upload_max_filesize'] * 1024, 'ext'=> $this->conf['upload_images_ext']])->rule('uniqid')->move("{$this->conf['file_path']}/" . $date);
             if($info) {
                 $file_path = str_replace("\\", "/", Config::get('web.domain') . "/{$date}/{$info->getSaveName()}");
