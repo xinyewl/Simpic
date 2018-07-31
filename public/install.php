@@ -14,7 +14,7 @@ switch ($stop) {
         $is['mysqli'] = class_exists('mysqli');
         //$is['zipArchive'] = class_exists('ZipArchive');
         $is['config_writable'] = is_writable($config_file);
-        $is['pic_writable'] = is_writable('./pic');
+        $is['pic_writable'] = is_writable('./');
         $php_version = explode('-', phpversion());
         $php_version = $php_version[0];
         $is['php_version_gt530'] = strnatcasecmp($php_version, '5.3.0') >= 0 ? true : false;
